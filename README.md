@@ -6,31 +6,47 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Modificaciones
+"page.tsx" este se encarga de mostar la información sobre el tipo de cambio en la web.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Agreaciones
+Se agrego una carpeta "lib" con la clase "api.ts" la cual funciona para la Recuperación de Datos, cambia los datos de la API (que son en formato JSON) y los pasa a XML (entendible para el usuario), hay manejo de erroress y formatea los datos.
 
-## Learn More
+"types.ts" se agrego este archivo con el proposito de ser una interfaz de establecer los datos estructurados que van a representar la información relacionada con un registro de tipo de cambio.
 
-To learn more about Next.js, take a look at the following resources:
+## Configurar Backend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Se tuvo que agregar una configuración al backend especialmente al "SOAPConfig", la cual es 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+    }
+}
 
-## Deploy on Vercel
+Esto srive para que el front pueda consumir la API del Backend, para que el Backend de permiso.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Instalar Librerias
+Se tuvieron que instalar 2 librerias para Transformar la respuesta XML en JSON en el backend o en el frontend
+la cuales son 
+    npm install xml2js
+    npm install --save-dev @types/xml2js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+
+
