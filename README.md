@@ -2,8 +2,7 @@
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
-
+## Para iniciar el proyecto 
 First, run the development server:
 
 ```bash
@@ -11,6 +10,7 @@ npm run dev
 
 ```
 
+## Para ver el proyecto en el navegador
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Modificaciones
@@ -44,8 +44,12 @@ Esto srive para que el front pueda consumir la API del Backend, para que el Back
 ## Instalar Librerias
 Se tuvieron que instalar 2 librerias para Transformar la respuesta XML en JSON en el backend o en el frontend
 la cuales son 
+```bash
     npm install xml2js
+```
+```bash
     npm install --save-dev @types/xml2js
+```
 
 
 
